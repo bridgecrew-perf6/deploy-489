@@ -24,5 +24,8 @@ inputs:
     required: true
 
 runs:
+  # https://gitlab.com/internetarchive/nomad
   using: 'registry.gitlab.com/internetarchive/nomad/master'
+
+  # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
   main: /deploy.sh
