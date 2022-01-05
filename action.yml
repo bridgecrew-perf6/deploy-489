@@ -29,4 +29,5 @@ runs:
   image: 'registry.gitlab.com/internetarchive/nomad/master'
 
   # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
-  main: /deploy.sh
+  args:
+    - /deploy.sh
