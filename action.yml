@@ -27,6 +27,11 @@ runs:
   # https://gitlab.com/internetarchive/nomad
   using: 'docker'
   image: 'docker://registry.gitlab.com/internetarchive/nomad/master'
+  env:
+    BASE_DOMAIN: ${{ inputs.BASE_DOMAIN }}
+    NOMAD_ADDR: ${{ inputs.NOMAD_ADDR }}
+    NOMAD_TOKEN: ${{ inputs.NOMAD_TOKEN }}
+    REGISTRY_TOKEN: ${{ inputs.REGISTRY_TOKEN }}
 
   # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
   args:
