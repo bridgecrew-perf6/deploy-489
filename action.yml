@@ -19,6 +19,11 @@ inputs:
     description: 'nomad cluster credentials - store in your repo GitHub Secrets'
     required: true
 
+  NOMAD_PROD:
+    description: 'nomad archive.org production cluster credentials - store in your repo GitHub Secrets'
+    default: ''
+    required: false
+
   REGISTRY_TOKEN:
     description: 'for registry'
     required: true
@@ -31,6 +36,7 @@ runs:
     BASE_DOMAIN: ${{ inputs.BASE_DOMAIN }}
     NOMAD_ADDR: ${{ inputs.NOMAD_ADDR }}
     NOMAD_TOKEN: ${{ inputs.NOMAD_TOKEN }}
+    NOMAD_PROD: ${{ inputs.NOMAD_PROD }}
     REGISTRY_TOKEN: ${{ inputs.REGISTRY_TOKEN }}
   args:
     # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
