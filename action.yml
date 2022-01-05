@@ -1,0 +1,28 @@
+
+# Turned into a GitHub Actions composite action, original YML from:
+#   https://github.com/actions/starter-workflows/blob/main/ci/docker-publish.yml
+
+name: Deploy to nomad cluster
+description: 'Deploys a github built docker image from its registry to a nomad cluster'
+author: internetarchive
+
+inputs:
+  BASE_DOMAIN:
+    description: 'nomad cluster wildcard DNS domain name, eg: example.com'
+    required: true
+
+  NOMAD_ADDR:
+    description: 'nomad cluster API endpoint'
+    required: true
+
+  NOMAD_TOKEN:
+    description: 'nomad cluster credentials - store in your repo GitHub Secrets'
+    required: true
+
+  REGISTRY_TOKEN:
+    description: 'for registry'
+    required: true
+
+runs:
+  using: 'registry.gitlab.com/internetarchive/nomad/master'
+  main: /deploy.sh
