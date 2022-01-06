@@ -12,14 +12,14 @@ inputs:
     required: true
 
   NOMAD_ADDR:
-    description: 'nomad cluster API endpoint'
-    required: true
+    description: 'nomad cluster API endpoint - archive.org deploys automate this but you can override'
+    required: false
 
   NOMAD_TOKEN:
     description: 'nomad cluster credentials - store in your repo GitHub Secrets'
     required: true
 
-  NOMAD_PROD:
+  NOMAD_TOKEN_PROD:
     description: 'nomad archive.org production cluster credentials - store in your repo GitHub Secrets'
     default: ''
     required: false
@@ -36,7 +36,7 @@ runs:
     BASE_DOMAIN: ${{ inputs.BASE_DOMAIN }}
     NOMAD_ADDR: ${{ inputs.NOMAD_ADDR }}
     NOMAD_TOKEN: ${{ inputs.NOMAD_TOKEN }}
-    NOMAD_PROD: ${{ inputs.NOMAD_PROD }}
+    NOMAD_TOKEN_PROD: ${{ inputs.NOMAD_TOKEN_PROD }}
     REGISTRY_TOKEN: ${{ inputs.REGISTRY_TOKEN }}
   args:
     # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
