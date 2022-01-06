@@ -5,6 +5,9 @@
 name: Deploy to nomad cluster
 description: 'Deploys a github built docker image from its registry to a nomad cluster'
 author: internetarchive
+branding:
+  icon: 'globe'
+  color: 'white'
 
 inputs:
   BASE_DOMAIN:
