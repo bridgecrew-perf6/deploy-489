@@ -9,6 +9,22 @@ branding:
   icon: 'globe'
   color: 'white'
 
+runs:
+  # https://gitlab.com/internetarchive/nomad
+  image: 'docker://registry.gitlab.com/internetarchive/nomad/master'
+  using: 'docker'
+  env:
+    BASE_DOMAIN: ${{ inputs.BASE_DOMAIN }}
+    NOMAD_ADDR: ${{ inputs.NOMAD_ADDR }}
+    NOMAD_TOKEN: ${{ inputs.NOMAD_TOKEN }}
+    NOMAD_TOKEN_PROD: ${{ inputs.NOMAD_TOKEN_PROD }}
+    REGISTRY_TOKEN: ${{ inputs.REGISTRY_TOKEN }}
+    NOMAD_VAR_HOSTNAMES: ${{ inputs.NOMAD_VAR_HOSTNAMES }}
+    NOMAD_VAR_CHECK_PROTOCOL: ${{ inputs.NOMAD_VAR_CHECK_PROTOCOL }}
+  args:
+    # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
+    - /deploy.sh
+
 inputs:
   BASE_DOMAIN:
     description: 'nomad cluster wildcard DNS domain name, eg: example.com'
@@ -31,7 +47,8 @@ inputs:
     description: 'for registry'
     required: true
 
-  NOMAD_VAR_HOSTNAMES:
+
+  NOMAD_VAR_CHECK_PATH:
     description: '@see https://gitlab.com/internetarchive/nomad#customizing'
     required: false
 
@@ -39,18 +56,50 @@ inputs:
     description: '@see https://gitlab.com/internetarchive/nomad#customizing'
     required: false
 
-runs:
-  # https://gitlab.com/internetarchive/nomad
-  image: 'docker://registry.gitlab.com/internetarchive/nomad/master'
-  using: 'docker'
-  env:
-    BASE_DOMAIN: ${{ inputs.BASE_DOMAIN }}
-    NOMAD_ADDR: ${{ inputs.NOMAD_ADDR }}
-    NOMAD_TOKEN: ${{ inputs.NOMAD_TOKEN }}
-    NOMAD_TOKEN_PROD: ${{ inputs.NOMAD_TOKEN_PROD }}
-    REGISTRY_TOKEN: ${{ inputs.REGISTRY_TOKEN }}
-    NOMAD_VAR_HOSTNAMES: ${{ inputs.NOMAD_VAR_HOSTNAMES }}
-    NOMAD_VAR_CHECK_PROTOCOL: ${{ inputs.NOMAD_VAR_CHECK_PROTOCOL }}
-  args:
-    # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
-    - /deploy.sh
+  NOMAD_VAR_CHECK_TIMEOUT:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_COUNT:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_CPU:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_HEALTH_TIMEOUT:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_HOME:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_HOSTNAMES:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_MEMORY:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_NO_DEPLOY:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_PG:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_PORTS:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_PV:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
+
+  NOMAD_VAR_PV_DB:
+    description: '@see https://gitlab.com/internetarchive/nomad#customizing'
+    required: false
