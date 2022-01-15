@@ -33,6 +33,7 @@ runs:
     NOMAD_VAR_PORTS: ${{ inputs.NOMAD_VAR_PORTS }}
     NOMAD_VAR_PV: ${{ inputs.NOMAD_VAR_PV }}
     NOMAD_VAR_PV_DB: ${{ inputs.NOMAD_VAR_PV_DB }}
+    PRIVATE_REPO: ${{github.event.repository.private}}
   args:
     # https://gitlab.com/internetarchive/nomad/-/blob/master/deploy.sh
     - /deploy.sh
